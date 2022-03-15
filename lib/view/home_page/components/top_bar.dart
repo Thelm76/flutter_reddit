@@ -4,22 +4,16 @@ class TopBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
 
-  final PreferredSizeWidget? bottom;
-
-  const TopBar({Key? key, this.bottom}): preferredSize=const Size.fromHeight(0.0), super(key: key);
+  const TopBar({Key? key}): preferredSize=const Size.fromHeight(60.0), super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      pinned: true,
-      snap: false,
-      floating: true,
-      backgroundColor: Colors.grey,
+    return AppBar(
+      elevation: 0,
       leading: IconButton(
-        icon: Icon(Icons.menu),
+        icon: const Icon(Icons.menu),
         onPressed: () {
-          //TODO
-          throw UnimplementedError();
+          Scaffold.of(context).openDrawer();
         }),
       title: Container(
         height: 40.0, //TODO: parametric height
@@ -33,13 +27,12 @@ class TopBar extends StatelessWidget with PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.person_pin),
-          onPressed: () {//TODO
-            throw UnimplementedError();
+          icon: const Icon(Icons.person_pin),
+          onPressed: () {
+            Scaffold.of(context).openEndDrawer();
           }
         )
       ],
-      bottom: bottom,
     );
   }
 }
