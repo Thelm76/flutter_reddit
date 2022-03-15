@@ -27,12 +27,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return Scaffold(
       bottomNavigationBar: BottomBar(),
       appBar: TopBar(),
+      extendBodyBehindAppBar: true,
       drawer: LeftDrawer(),
       endDrawer: RightDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           TopBarSliver(content: TabBar(
             controller: _tabController,
+            labelPadding: EdgeInsets.zero,
             tabs: const [
               Tab(text: "Accueil",),
               Tab(text: "r/popular")

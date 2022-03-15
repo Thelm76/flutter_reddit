@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 
 class TopBarSliver extends StatelessWidget {
@@ -13,13 +10,21 @@ class TopBarSliver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: content,
+      toolbarHeight: 0,
+      collapsedHeight: 0,
+      expandedHeight: 60,
+      flexibleSpace: FlexibleSpaceBar(
+        title: content,
+        expandedTitleScale: 1,
+        centerTitle: true,
+      ),
       centerTitle: true,
       automaticallyImplyLeading: false,
       actions: const [SizedBox.shrink()],
-      pinned: false,
+      pinned: true,
       floating: true,
       snap:true,
+      forceElevated: true,
       elevation: 2,
     );
   }
