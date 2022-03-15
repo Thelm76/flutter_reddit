@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/view/home_page/components/right_drawer.dart';
 import 'components/thread_list/thread_list.dart';
 import 'components/bottom_bar.dart';
 import 'components/top_bar.dart';
@@ -12,10 +13,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       bottomNavigationBar: BottomBar(),
-      //drawer: LeftDrawer(),
+      drawer: LeftDrawer(),
+      endDrawer: RightDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
-          TopBar(),
+          TopBar(
+
+          ),
           SliverToBoxAdapter(
             child: ThreadList()
           )
