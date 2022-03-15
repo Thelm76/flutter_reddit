@@ -23,14 +23,15 @@ class _BottomBarState extends State<BottomBar> {
     return BottomNavigationBar(
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
-        BottomNavigationBarItem(icon: Icon(Icons.explore_outlined), label: "explore"),
-        BottomNavigationBarItem(icon: Icon(Icons.add), label: "more"),
-        BottomNavigationBarItem(icon: Icon(Icons.messenger_outline), label: "messages"),
-        BottomNavigationBarItem(icon: Icon(Icons.notifications_outlined), label: "notifications"),
+      items: [
+        BottomNavigationBarItem(icon: Icon(_selectedIndex==0?Icons.home:Icons.home_outlined), label: "home"),
+        BottomNavigationBarItem(icon: Icon(_selectedIndex==1?Icons.explore:Icons.explore_outlined), label: "explore"),
+        BottomNavigationBarItem(icon: Icon(_selectedIndex==2?Icons.add:Icons.add_outlined), label: "more"),
+        BottomNavigationBarItem(icon: Icon(_selectedIndex==3?Icons.messenger:Icons.messenger_outline), label: "messages"),
+        BottomNavigationBarItem(icon: Icon(_selectedIndex==4?Icons.notifications:Icons.notifications_outlined), label: "notifications"),
       ],
       currentIndex: _selectedIndex,
+      selectedItemColor: Colors.grey[600],
       onTap: _onItemTapped,
       type: BottomNavigationBarType.fixed,
     );
