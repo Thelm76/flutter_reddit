@@ -5,8 +5,10 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return BottomNavigationBar(items: const [
+      BottomNavigationBarItem(icon: Icon(Icons.abc), label:"abc"),
+      BottomNavigationBarItem(icon: Icon(Icons.abc), label:"abc"),
+    ]);
   }
 
   

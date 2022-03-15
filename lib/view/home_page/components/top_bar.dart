@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class TopBar extends StatelessWidget implements PreferredSizeWidget {
@@ -5,12 +6,10 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return AppBar();
   }
 
   @override
-  // TODO: implement preferredSize
-  Size get preferredSize => throw UnimplementedError();
+  Size get preferredSize => const Size.fromHeight(50.0);
   
 }
