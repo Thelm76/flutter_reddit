@@ -15,14 +15,12 @@ class TopBar extends StatelessWidget with PreferredSizeWidget {
         onPressed: () {
           Scaffold.of(context).openDrawer();
         }),
-      title: Container(
-        height: 40.0, //TODO: parametric height
-        child: TextFormField(
-          decoration: const InputDecoration(
-            labelText: "Rechercher",
-            prefixIcon: Icon(Icons.search),
-            border: OutlineInputBorder()
-          ),
+      title: TextFormField(
+        decoration: const InputDecoration(
+          contentPadding: EdgeInsets.all(0),
+          labelText: "Rechercher",
+          prefixIcon: Icon(Icons.search),
+          border: OutlineInputBorder()
         )
       ),
       actions: [

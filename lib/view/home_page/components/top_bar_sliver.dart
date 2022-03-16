@@ -12,7 +12,7 @@ class TopBarSliver extends StatelessWidget {
     return SliverAppBar(
       toolbarHeight: 0,
       collapsedHeight: 0,
-      expandedHeight: 60,
+      expandedHeight: content?.preferredSize.height,
       flexibleSpace: FlexibleSpaceBar(
         title: content,
         expandedTitleScale: 1,
