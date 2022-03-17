@@ -1,24 +1,17 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/view/home_page/components/thread_list/thread_card/thread_card.dart';
 
 class ThreadList extends StatefulWidget {
   const ThreadList({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ThreadListState();
-  
 }
 
-class _ThreadListState extends State<ThreadList>{
+class _ThreadListState extends State<ThreadList> {
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-              height: 2000,
-              child: Center(
-                child: Text("salut")
-              ),
-            );
+    return SliverList(
+        delegate: SliverChildListDelegate(List.filled(10, const ThreadCard())));
   }
-
 }

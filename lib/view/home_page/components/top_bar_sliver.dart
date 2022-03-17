@@ -5,15 +5,16 @@ class TopBarSliver extends StatelessWidget {
 
   final bool? shouldRetract;
 
-  const TopBarSliver({Key? key, this.content, this.shouldRetract}) : super(key: key);
+  const TopBarSliver({Key? key, this.content, this.shouldRetract})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       toolbarHeight: 0,
-      collapsedHeight: 0,
       expandedHeight: content?.preferredSize.height,
       flexibleSpace: FlexibleSpaceBar(
+        titlePadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 40),
         title: content,
         expandedTitleScale: 1,
         centerTitle: true,
@@ -23,7 +24,7 @@ class TopBarSliver extends StatelessWidget {
       actions: const [SizedBox.shrink()],
       pinned: true,
       floating: true,
-      snap:true,
+      snap: true,
       forceElevated: true,
       elevation: 2,
     );
