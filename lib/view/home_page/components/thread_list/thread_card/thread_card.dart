@@ -17,9 +17,7 @@ class _ThreadCardState extends State<ThreadCard> {
       margin: const EdgeInsets.symmetric(vertical: 5),
       child: Column(
         children: const [
-          Placeholder(
-            fallbackHeight: 50,
-          ),
+          ThreadCardTop(),
           Placeholder(
             fallbackHeight: 200,
           ),
