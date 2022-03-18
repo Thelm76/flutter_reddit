@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/theme/theme.dart';
 import 'package:flutter_reddit/view/home_page/components/right_drawer.dart';
 import 'components/thread_list/thread_list.dart';
 import 'components/bottom_bar.dart';
@@ -24,25 +25,30 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
-      appBar: TopBar(),
+      bottomNavigationBar: const BottomBar(),
+      appBar: const TopBar(),
       extendBodyBehindAppBar: true,
-      drawer: LeftDrawer(),
-      endDrawer: RightDrawer(),
+      drawer: const LeftDrawer(),
+      endDrawer: const RightDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           TopBarSliver(
-              content: TabBar(
-                  isScrollable: true,
-                  controller: _tabController,
-                  labelPadding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                  tabs: const [
+            content: TabBar(
+              isScrollable: true,
+              indicatorColor: secondaryColor,
+              controller: _tabController,
+              tabs: const [
                 Tab(
                   text: "Accueil",
+                  height: 40,
                 ),
-                Tab(text: "r/popular")
-              ])),
+                Tab(
+                  text: "r/popular",
+                  height: 40,
+                ),
+              ],
+            ),
+          ),
           const ThreadList()
         ],
       ),
