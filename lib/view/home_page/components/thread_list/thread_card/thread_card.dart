@@ -13,15 +13,13 @@ class _ThreadCardState extends State<ThreadCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
-      margin: const EdgeInsets.symmetric(vertical: 5),
       child: Column(
         children: const [
           ThreadCardTop(),
           Placeholder(
             fallbackHeight: 200,
           ),
-          ThreadCardBottom()
+          ThreadCardBottom(),
         ],
       ),
     );

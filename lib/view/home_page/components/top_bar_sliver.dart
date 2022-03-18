@@ -19,14 +19,12 @@ class TopBarSliver extends StatelessWidget {
         expandedTitleScale: 1,
         centerTitle: true,
       ),
-      centerTitle: true,
       automaticallyImplyLeading: false,
       actions: const [SizedBox.shrink()],
       pinned: true,
       floating: true,
       snap: true,
       forceElevated: true,
-      elevation: 2,
     );
   }
 }

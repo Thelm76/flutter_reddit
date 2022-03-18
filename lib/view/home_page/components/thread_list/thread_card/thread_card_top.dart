@@ -17,19 +17,30 @@ class ThreadCardTop extends StatelessWidget {
                 child: Icon(Icons.person),
               ),
             ),
-            Text.rich(TextSpan(children: [
+            Text.rich(
               TextSpan(
-                  text: "r/abcd\n",
-                  style: const TextStyle(fontWeight: FontWeight.w900),
-                  recognizer: TapGestureRecognizer()..onTap = () {}),
-              TextSpan(
-                  text: "u/user",
-                  recognizer: TapGestureRecognizer()..onTap = () {}),
-              const TextSpan(text: " • 1h"),
-              TextSpan(
-                  text: " • s.redd.it",
-                  recognizer: TapGestureRecognizer()..onTap = () {}),
-            ]))
+                children: [
+                  TextSpan(
+                    text: "r/abcd\n",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 14,
+                    ),
+                    recognizer: TapGestureRecognizer()..onTap = () {},
+                  ),
+                  TextSpan(
+                    text: "u/user",
+                    style: const TextStyle(fontSize: 12),
+                    recognizer: TapGestureRecognizer()..onTap = () {},
+                  ),
+                  const TextSpan(text: " • 1h"),
+                  TextSpan(
+                    text: " • s.redd.it",
+                    recognizer: TapGestureRecognizer()..onTap = () {},
+                  ),
+                ],
+              ),
+            )
           ],
         ),
         TextButton(

@@ -12,6 +12,9 @@ class _ThreadListState extends State<ThreadList> {
   @override
   Widget build(BuildContext context) {
     return SliverList(
-        delegate: SliverChildListDelegate(List.filled(10, const ThreadCard())));
+      delegate: SliverChildListDelegate(
+        List.filled(10, const ThreadCard()),
+      ),
+    );
   }
 }

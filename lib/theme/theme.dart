@@ -37,6 +37,7 @@ ThemeData lightTheme() {
         statusBarColor: primaryColor,
       ),
       foregroundColor: textColor,
+      elevation: 2,
     ),
     tabBarTheme: const TabBarTheme().copyWith(
         labelColor: darkTextColor,
@@ -45,5 +46,22 @@ ThemeData lightTheme() {
         unselectedLabelStyle: tabBarLabelStyle,
         unselectedLabelColor: lightTextColor),
     backgroundColor: background,
+    cardTheme: const CardTheme().copyWith(
+      color: primaryColor,
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      elevation: 0.5,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData().copyWith(
+      elevation: 0,
+      selectedLabelStyle: const TextStyle(fontSize: 0),
+      unselectedLabelStyle: const TextStyle(fontSize: 0),
+      backgroundColor: primaryColor,
+      selectedItemColor: darkTextColor,
+      unselectedItemColor: lightTextColor,
+      type: BottomNavigationBarType.fixed,
+    ),
   );
 }

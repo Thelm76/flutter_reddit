@@ -20,7 +20,7 @@ class ThreadCardBottom extends StatelessWidget {
               padding: EdgeInsets.zero,
               icon: const Icon(Icons.arrow_downward_outlined),
               onPressed: () {},
-            )
+            ),
           ],
         ),
         const SizedBox.square(),
