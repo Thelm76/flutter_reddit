@@ -5,7 +5,6 @@ class LeftDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Drawer(
-    );
+    return const Drawer();
   }
 }

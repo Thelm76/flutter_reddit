@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late TabController _tabController;
+
   @override
   void initState() {
     super.initState();
@@ -38,18 +39,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               indicatorColor: secondaryColor,
               controller: _tabController,
               tabs: const [
-                Tab(
-                  text: "Accueil",
-                  height: 40,
-                ),
-                Tab(
-                  text: "r/popular",
-                  height: 40,
-                ),
+                Tab(text: "Accueil", height: 40),
+                Tab(text: "r/popular", height: 40),
               ],
             ),
           ),
-          const ThreadList()
+          const ThreadList(),
         ],
       ),
     );

@@ -30,37 +30,44 @@ class _BottomBarState extends State<BottomBar> {
       ),
       child: BottomNavigationBar(
         iconSize: 30,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
             icon: Center(
-                child: Icon(
-                    _selectedIndex == 0 ? Icons.home : Icons.home_outlined)),
+              child: Icon(
+                _selectedIndex == 0 ? Icons.home : Icons.home_outlined,
+              ),
+            ),
             label: "home",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-                _selectedIndex == 1 ? Icons.explore : Icons.explore_outlined),
+              _selectedIndex == 1 ? Icons.explore : Icons.explore_outlined,
+            ),
             label: "explore",
           ),
           BottomNavigationBarItem(
-            icon: Icon(_selectedIndex == 2 ? Icons.add : Icons.add_outlined),
+            icon: Icon(
+              _selectedIndex == 2 ? Icons.add : Icons.add_outlined,
+            ),
             label: "more",
           ),
           BottomNavigationBarItem(
-            icon: Icon(_selectedIndex == 3
-                ? Icons.messenger
-                : Icons.messenger_outline),
+            icon: Icon(
+              _selectedIndex == 3 ? Icons.messenger : Icons.messenger_outline,
+            ),
             label: "messages",
           ),
           BottomNavigationBarItem(
-            icon: Icon(_selectedIndex == 4
-                ? Icons.notifications
-                : Icons.notifications_outlined),
+            icon: Icon(
+              _selectedIndex == 4
+                  ? Icons.notifications
+                  : Icons.notifications_outlined,
+            ),
             label: "notifications",
           ),
         ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
       ),
     );
   }

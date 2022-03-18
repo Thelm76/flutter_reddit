@@ -19,6 +19,7 @@ class TopBar extends StatelessWidget with PreferredSizeWidget {
         },
       ),
       title: const TextField(
+        textInputAction: TextInputAction.search,
         maxLines: 1,
         decoration: InputDecoration(
           labelText: "Rechercher",
