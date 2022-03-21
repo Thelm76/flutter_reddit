@@ -1,7 +1,8 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/view/home_page/components/thread_list/thread_card/thread_card_bottom.dart';
 
 class ThreadCard extends StatefulWidget {
   const ThreadCard({
@@ -21,7 +22,7 @@ class _ThreadCardState extends State<ThreadCard> {
     return Card(
       child: Column(
         children: [
-          const _ThreadCardTop(),
+          _ThreadCardTop(cacheKey: widget.cacheKey + "pic"),
           Container(
             constraints: const BoxConstraints(
               maxHeight: 400,
@@ -42,7 +43,7 @@ class _ThreadCardState extends State<ThreadCard> {
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
-          const ThreadCardBottom(),
+          const _ThreadCardBottom(),
         ],
       ),
     );
@@ -50,7 +51,9 @@ class _ThreadCardState extends State<ThreadCard> {
 }
 
 class _ThreadCardTop extends StatelessWidget {
-  const _ThreadCardTop({Key? key}) : super(key: key);
+  const _ThreadCardTop({Key? key, required this.cacheKey}) : super(key: key);
+
+  final String cacheKey;
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +64,15 @@ class _ThreadCardTop extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {},
-              child: const CircleAvatar(
-                child: Icon(Icons.person),
+              child: CircleAvatar(
+                radius: 20,
+                backgroundColor:
+                    Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                child: const Icon(Icons.person),
+                foregroundImage: CachedNetworkImageProvider(
+                  "https://picsum.photos/128/128",
+                  cacheKey: cacheKey,
+                ),
               ),
             ),
             Text.rich(
@@ -97,6 +107,48 @@ class _ThreadCardTop extends StatelessWidget {
         ),
         IconButton(
           icon: const Icon(Icons.more_vert),
+          onPressed: () {},
+        ),
+      ],
+    );
+  }
+}
+
+class _ThreadCardBottom extends StatelessWidget {
+  const _ThreadCardBottom({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            IconButton(
+              padding: EdgeInsets.zero,
+              icon: const Icon(Icons.arrow_upward_outlined),
+              onPressed: () {},
+            ),
+            const Text("423"),
+            IconButton(
+              padding: EdgeInsets.zero,
+              icon: const Icon(Icons.arrow_downward_outlined),
+              onPressed: () {},
+            ),
+          ],
+        ),
+        const SizedBox.square(),
+        const Icon(Icons.messenger_outline),
+        const Text("423"),
+        const SizedBox.square(),
+        const SizedBox.square(),
+        TextButton.icon(
+          icon: const Icon(Icons.share_outlined),
+          label: const Text("Partager"),
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: const Icon(Icons.card_giftcard_rounded),
           onPressed: () {},
         ),
       ],
