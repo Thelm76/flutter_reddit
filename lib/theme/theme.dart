@@ -32,6 +32,8 @@ ThemeData lightTheme() {
       prefixIconColor: textColor,
     ),
     appBarTheme: const AppBarTheme().copyWith(
+      titleSpacing: 0,
+      iconTheme: const IconThemeData().copyWith(color: lightTextColor),
       backgroundColor: primaryColor,
       systemOverlayStyle: const SystemUiOverlayStyle().copyWith(
         statusBarColor: primaryColor,

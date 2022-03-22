@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/theme/theme.dart';
 
 class TopBar extends StatelessWidget with PreferredSizeWidget {
   @override
@@ -18,24 +19,38 @@ class TopBar extends StatelessWidget with PreferredSizeWidget {
           Scaffold.of(context).openDrawer();
         },
       ),
-      title: const TextField(
+      title: TextField(
         textInputAction: TextInputAction.search,
         maxLines: 1,
         decoration: InputDecoration(
           labelText: "Rechercher",
+          labelStyle: const TextStyle(fontSize: 14),
           prefixIcon: Padding(
-            padding: EdgeInsets.all(5),
-            child: Icon(Icons.search, size: 20),
+            padding: const EdgeInsets.all(5),
+            child: Icon(
+              Icons.search,
+              size: 20,
+              color: lightTextColor,
+            ),
           ),
-          prefixIconConstraints: BoxConstraints.tightFor(),
+          prefixIconConstraints: const BoxConstraints.tightFor(),
         ),
       ),
       actions: [
-        IconButton(
-          icon: const Icon(Icons.person_pin),
-          onPressed: () {
-            Scaffold.of(context).openEndDrawer();
-          },
+        Padding(
+          padding: const EdgeInsetsDirectional.only(start: 16, end: 16),
+          child: CircleAvatar(
+            radius: 15,
+            child: IconButton(
+              icon: const Icon(
+                Icons.person_pin,
+                size: 15,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openEndDrawer();
+              },
+            ),
+          ),
         ),
       ],
     );
