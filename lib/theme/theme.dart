@@ -35,6 +35,7 @@ ThemeData lightTheme() {
       backgroundColor: primaryColor,
       systemOverlayStyle: const SystemUiOverlayStyle().copyWith(
         statusBarColor: primaryColor,
+        statusBarIconBrightness: Brightness.dark,
       ),
       foregroundColor: textColor,
       elevation: 2,
