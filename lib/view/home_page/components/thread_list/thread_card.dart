@@ -55,6 +55,10 @@ class _ThreadCardTop extends StatelessWidget {
 
   final String cacheKey;
 
+  static const subTextStyle =
+      TextStyle(fontWeight: FontWeight.w900, fontSize: 14);
+  static const userTextStyle = TextStyle(fontSize: 12);
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -62,13 +66,18 @@ class _ThreadCardTop extends StatelessWidget {
       children: [
         Row(
           children: [
-            TextButton(
-              onPressed: () {},
+            Padding(
+              padding: const EdgeInsetsDirectional.only(start: 16, end: 8),
               child: CircleAvatar(
-                radius: 20,
+                radius: 16,
                 backgroundColor:
                     Colors.primaries[Random().nextInt(Colors.primaries.length)],
-                child: const Icon(Icons.person),
+                child: IconButton(
+                  iconSize: 16,
+                  icon: const Icon(Icons.person),
+                  color: Colors.white,
+                  onPressed: () {},
+                ),
                 foregroundImage: CachedNetworkImageProvider(
                   "https://picsum.photos/128/128",
                   cacheKey: cacheKey,
@@ -80,20 +89,21 @@ class _ThreadCardTop extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: "r/abcd\n",
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 14,
-                    ),
+                    style: subTextStyle,
                     recognizer: TapGestureRecognizer()..onTap = () {},
                   ),
                   TextSpan(
                     text: "u/user",
-                    style: const TextStyle(fontSize: 12),
+                    style: userTextStyle,
                     recognizer: TapGestureRecognizer()..onTap = () {},
                   ),
-                  const TextSpan(text: " • 1h"),
+                  const TextSpan(
+                    text: " • 1h",
+                    style: userTextStyle,
+                  ),
                   TextSpan(
                     text: " • s.redd.it",
+                    style: userTextStyle,
                     recognizer: TapGestureRecognizer()..onTap = () {},
                   ),
                 ],
