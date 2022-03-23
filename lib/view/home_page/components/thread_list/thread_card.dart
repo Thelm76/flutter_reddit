@@ -1,16 +1,27 @@
 import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/theme/theme.dart';
+import 'package:intl/intl.dart';
 
 class ThreadCard extends StatefulWidget {
-  const ThreadCard({
+  ThreadCard({
     Key? key,
     required this.cacheKey,
   }) : super(key: key);
 
   final String cacheKey;
+  late final String profilePic =
+      faker.image.image(random: true, keywords: ["profile"]);
+  final String userName = faker.internet.userName();
+  final String subreddit = faker.lorem.word();
+  late final String picture =
+      faker.image.image(random: true, keywords: [subreddit]);
+  final int ups = Random().nextInt(1 << 16);
+  final int reacts = Random().nextInt(1 << 15);
 
   @override
   State<ThreadCard> createState() => _ThreadCardState();
@@ -22,7 +33,12 @@ class _ThreadCardState extends State<ThreadCard> {
     return Card(
       child: Column(
         children: [
-          _ThreadCardTop(cacheKey: widget.cacheKey + "pic"),
+          _ThreadCardTop(
+            cacheKey: widget.cacheKey + "pp",
+            profilePic: widget.profilePic,
+            userName: widget.userName,
+            subReddit: widget.subreddit,
+          ),
           Container(
             constraints: const BoxConstraints(
               maxHeight: 400,
@@ -33,7 +49,7 @@ class _ThreadCardState extends State<ThreadCard> {
             child: CachedNetworkImage(
               fit: BoxFit.cover,
               cacheKey: widget.cacheKey,
-              imageUrl: "https://picsum.photos/200/700",
+              imageUrl: widget.picture,
               placeholder: (context, url) => const Center(
                 child: SizedBox.square(
                   dimension: 35,
@@ -43,7 +59,7 @@ class _ThreadCardState extends State<ThreadCard> {
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
-          const _ThreadCardBottom(),
+          _ThreadCardBottom(widget.ups, widget.reacts),
         ],
       ),
     );
@@ -51,9 +67,18 @@ class _ThreadCardState extends State<ThreadCard> {
 }
 
 class _ThreadCardTop extends StatelessWidget {
-  const _ThreadCardTop({Key? key, required this.cacheKey}) : super(key: key);
+  const _ThreadCardTop({
+    Key? key,
+    required this.cacheKey,
+    required this.profilePic,
+    required this.userName,
+    required this.subReddit,
+  }) : super(key: key);
 
   final String cacheKey;
+  final String profilePic;
+  final String userName;
+  final String subReddit;
 
   static const subTextStyle =
       TextStyle(fontWeight: FontWeight.w900, fontSize: 14);
@@ -79,7 +104,7 @@ class _ThreadCardTop extends StatelessWidget {
                   onPressed: () {},
                 ),
                 foregroundImage: CachedNetworkImageProvider(
-                  "https://picsum.photos/128/128",
+                  profilePic,
                   cacheKey: cacheKey,
                 ),
               ),
@@ -88,12 +113,12 @@ class _ThreadCardTop extends StatelessWidget {
               TextSpan(
                 children: [
                   TextSpan(
-                    text: "r/abcd\n",
+                    text: "r/$subReddit\n",
                     style: subTextStyle,
                     recognizer: TapGestureRecognizer()..onTap = () {},
                   ),
                   TextSpan(
-                    text: "u/user",
+                    text: "u/$userName",
                     style: userTextStyle,
                     recognizer: TapGestureRecognizer()..onTap = () {},
                   ),
@@ -125,34 +150,48 @@ class _ThreadCardTop extends StatelessWidget {
 }
 
 class _ThreadCardBottom extends StatelessWidget {
-  const _ThreadCardBottom({Key? key}) : super(key: key);
+  _ThreadCardBottom(this.ups, this.reacts, {Key? key}) : super(key: key);
+  final f = NumberFormat.compact(locale: "fr");
+  final int reacts;
+  final int ups;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Row(
           children: [
             IconButton(
+              splashRadius: 20,
+              visualDensity: const VisualDensity(horizontal: -4),
               padding: EdgeInsets.zero,
               icon: const Icon(Icons.arrow_upward_outlined),
               onPressed: () {},
             ),
-            const Text("423"),
+            Text(f.format(ups), textWidthBasis: TextWidthBasis.parent),
             IconButton(
+              splashRadius: 20,
+              visualDensity: const VisualDensity(horizontal: -4),
               padding: EdgeInsets.zero,
               icon: const Icon(Icons.arrow_downward_outlined),
               onPressed: () {},
             ),
           ],
         ),
-        const SizedBox.square(),
-        const Icon(Icons.messenger_outline),
-        const Text("423"),
-        const SizedBox.square(),
-        const SizedBox.square(),
+        const Spacer(),
+        Row(
+          children: [
+            const Icon(Icons.messenger_outline),
+            Padding(
+              padding: const EdgeInsetsDirectional.only(start: 8.0),
+              child: Text(f.format(reacts)),
+            ),
+          ],
+        ),
+        const Spacer(),
         TextButton.icon(
+          style: TextButton.styleFrom(primary: lightTextColor),
           icon: const Icon(Icons.share_outlined),
           label: const Text("Partager"),
           onPressed: () {},
