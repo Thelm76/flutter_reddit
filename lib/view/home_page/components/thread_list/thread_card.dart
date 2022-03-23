@@ -14,12 +14,16 @@ class ThreadCard extends StatefulWidget {
   }) : super(key: key);
 
   final String cacheKey;
-  late final String profilePic =
-      faker.image.image(random: true, keywords: ["profile"]);
+  late final String profilePic = faker.image.image(
+    random: true,
+    keywords: ["profile"],
+  );
   final String userName = faker.internet.userName();
   final String subreddit = faker.lorem.word();
-  late final String picture =
-      faker.image.image(random: true, keywords: [subreddit]);
+  late final String picture = faker.image.image(
+    random: true,
+    keywords: [subreddit],
+  );
   final int ups = Random().nextInt(1 << 16);
   final int reacts = Random().nextInt(1 << 15);
 
@@ -80,8 +84,10 @@ class _ThreadCardTop extends StatelessWidget {
   final String userName;
   final String subReddit;
 
-  static const subTextStyle =
-      TextStyle(fontWeight: FontWeight.w900, fontSize: 14);
+  static const subTextStyle = TextStyle(
+    fontWeight: FontWeight.w900,
+    fontSize: 12.5,
+  );
   static const userTextStyle = TextStyle(fontSize: 12);
 
   @override
@@ -141,6 +147,10 @@ class _ThreadCardTop extends StatelessWidget {
           onPressed: () {},
         ),
         IconButton(
+          iconSize: 20,
+          visualDensity: const VisualDensity(
+            horizontal: VisualDensity.minimumDensity,
+          ),
           icon: const Icon(Icons.more_vert),
           onPressed: () {},
         ),
@@ -164,7 +174,9 @@ class _ThreadCardBottom extends StatelessWidget {
           children: [
             IconButton(
               splashRadius: 20,
-              visualDensity: const VisualDensity(horizontal: -4),
+              visualDensity: const VisualDensity(
+                horizontal: VisualDensity.minimumDensity,
+              ),
               padding: EdgeInsets.zero,
               icon: const Icon(Icons.arrow_upward_outlined),
               onPressed: () {},
@@ -172,7 +184,9 @@ class _ThreadCardBottom extends StatelessWidget {
             Text(f.format(ups), textWidthBasis: TextWidthBasis.parent),
             IconButton(
               splashRadius: 20,
-              visualDensity: const VisualDensity(horizontal: -4),
+              visualDensity: const VisualDensity(
+                horizontal: VisualDensity.minimumDensity,
+              ),
               padding: EdgeInsets.zero,
               icon: const Icon(Icons.arrow_downward_outlined),
               onPressed: () {},
