@@ -142,17 +142,28 @@ class _ThreadCardTop extends StatelessWidget {
             )
           ],
         ),
-        TextButton(
-          child: const Text("Rejoindre"),
-          onPressed: () {},
-        ),
-        IconButton(
-          iconSize: 20,
-          visualDensity: const VisualDensity(
-            horizontal: VisualDensity.minimumDensity,
-          ),
-          icon: const Icon(Icons.more_vert),
-          onPressed: () {},
+        Row(
+          children: [
+            TextButton(
+              child: const Text("Rejoindre"),
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                //padding: const EdgeInsets.symmetric(horizontal: 15),
+                visualDensity: const VisualDensity(horizontal: 2, vertical: -2),
+                backgroundColor: secondaryColor,
+                primary: primaryColor,
+                shape: const StadiumBorder(),
+              ),
+            ),
+            IconButton(
+              iconSize: 18,
+              visualDensity: const VisualDensity(
+                horizontal: VisualDensity.minimumDensity,
+              ),
+              icon: const Icon(Icons.more_vert),
+              onPressed: () {},
+            ),
+          ],
         ),
       ],
     );
