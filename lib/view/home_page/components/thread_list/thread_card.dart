@@ -47,7 +47,7 @@ class _ThreadCardState extends State<ThreadCard> {
             constraints: const BoxConstraints(
               maxHeight: 400,
               maxWidth: double.infinity,
-              minHeight: 200,
+              minHeight: 0,
               minWidth: double.infinity,
             ),
             child: CachedNetworkImage(
