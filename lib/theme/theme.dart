@@ -31,12 +31,20 @@ ThemeData lightTheme() {
       floatingLabelBehavior: FloatingLabelBehavior.never,
       prefixIconColor: textColor,
     ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        alignment: Alignment.centerLeft,
+        primary: textColor,
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        shape: const RoundedRectangleBorder(),
+      ),
+    ),
     appBarTheme: const AppBarTheme().copyWith(
       titleSpacing: 0,
       iconTheme: const IconThemeData().copyWith(color: lightTextColor),
       backgroundColor: primaryColor,
       systemOverlayStyle: const SystemUiOverlayStyle().copyWith(
-        statusBarColor: primaryColor,
+        statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
       ),
       foregroundColor: textColor,
@@ -65,6 +73,12 @@ ThemeData lightTheme() {
       selectedItemColor: darkTextColor,
       unselectedItemColor: lightTextColor,
       type: BottomNavigationBarType.fixed,
+    ),
+    drawerTheme: const DrawerThemeData().copyWith(
+      backgroundColor: primaryColor,
+    ),
+    listTileTheme: const ListTileThemeData().copyWith(
+      dense: true,
     ),
   );
 }
