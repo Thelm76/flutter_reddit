@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/provider/user.dart';
 import 'package:flutter_reddit/theme/theme.dart';
+import 'package:provider/provider.dart';
 
 class LeftDrawer extends StatefulWidget {
   const LeftDrawer({Key? key}) : super(key: key);
@@ -40,18 +42,23 @@ class _LeftDrawerState extends State<LeftDrawer> {
                         _expanded = expanded;
                       });
                     },
-                    children:
-                        List<Widget>.generate(15, (index) => _CommunityItem())
-                          ..add(
-                            SizedBox(
-                              width: double.infinity,
-                              child: TextButton.icon(
-                                onPressed: () {},
-                                icon: const Icon(Icons.library_books_outlined),
-                                label: const Text("Flux Personnalisés"),
-                              ),
-                            ),
+                    children: List<Widget>.generate(
+                        context.watch<User>().subscribedSubs.length,
+                        (index) => _CommunityItem(
+                            name: context
+                                .watch<User>()
+                                .subscribedSubs[index]
+                                .name))
+                      ..add(
+                        SizedBox(
+                          width: double.infinity,
+                          child: TextButton.icon(
+                            onPressed: () {},
+                            icon: const Icon(Icons.library_books_outlined),
+                            label: const Text("Flux Personnalisés"),
                           ),
+                        ),
+                      ),
                   ),
                 ),
                 const Divider(),
@@ -81,6 +88,8 @@ class _LeftDrawerState extends State<LeftDrawer> {
 }
 
 class _CommunityItem extends StatefulWidget {
+  final String name;
+  const _CommunityItem({required this.name});
   @override
   State<_CommunityItem> createState() => _CommunityItemState();
 }

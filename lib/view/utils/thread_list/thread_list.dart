@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/view/home_page/components/thread_list/thread_card.dart';
+import 'package:flutter_reddit/view/Utils/thread_list/thread_card.dart';
 
 class ThreadList extends StatefulWidget {
   const ThreadList({Key? key}) : super(key: key);
